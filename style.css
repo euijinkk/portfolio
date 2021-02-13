@@ -1,0 +1,147 @@
+:root {
+  /* Color */
+
+  /* size */
+  --spacing: 12px;
+  --spacing-small: 6px;
+  /* font-size*/
+  --font-large: 20px;
+  --font-regular: 16px;
+  --font-medium: 14px;
+  --font-small: 12px;
+  --font-micro: 10px;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: var(--spacing);
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border-style: none;
+
+  /* 투명색 어케하노*/
+}
+
+.title {
+  font-weight: bold;
+  font-size: var(--font-large);
+  margin-bottom: 12px;
+}
+
+.description {
+  margin-bottom: 20px;
+  width: 80%;
+  font-size: 12px;
+}
+
+/* header */
+header {
+  padding: var(--spacing);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+header .index ul {
+  display: flex;
+  align-items: flex-start;
+}
+
+header .index ul button {
+  color: white;
+  background-color: transparent;
+}
+
+/* profile */
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(imgs/edinburg.JPG);
+  background-size: cover;
+  background-position: 50% 50%;
+  /* 사진 정상적으로 보이려면 어떻게 하나? */
+}
+
+.profile .profile__photo img {
+  /* 사진 크기 조절하고 싶다. */
+  border-radius: 50%;
+  border-color: white;
+  border-style: solid;
+  margin-top: 20px;
+}
+
+.profile {
+  color: white;
+}
+
+.profile .profile__contact__btn {
+  margin: var(--spacing);
+  background-color: transparent;
+  color: white;
+  outline: 1px solid;
+  border-radius: 10%; /* outline 의 border radius를 설정하고 싶다*/
+}
+
+/* aboutme */
+
+.aboutme {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.aboutme__stacks {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+
+  margin-bottom: 30px;
+  /* 안에 3개 같은 크기로 할당하고 싶다 */
+}
+
+.aboutme__stack {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+}
+
+.aboutme .career {
+  display: flex;
+  flex-direction: row;
+  /* 이친구 왼쪽으로 어떻게 보내나.
+  align-items: flex-start;
+  text-align: left;
+  align-content: flex-start;
+  */
+}
+.aboutme .career .career__img {
+  width: 30px;
+  height: 30px;
+}
+
+.aboutme .career img {
+  background-size: 30px;
+  width: 30px;
+  height: 30px;
+  margin-top: 6.6px;
+}
+
+.aboutme .career .career__info {
+  margin-left: 10px;
+}

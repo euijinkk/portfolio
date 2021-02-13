@@ -11,9 +11,126 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="imgs/sisyphe_philo.png">
     <!-- font-family: 'Open Sans', sans-serif; -->
-
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
 </head>
 <body>
-    
+
+    <section class="profile">
+        <header>
+            <div class="logo">
+                <span>
+                    <i class="fas fa-book-open"></i>
+                </span>
+                <span class="name">
+                    김의진
+                </span>
+            </div>
+            <div class="index">
+                <ul>
+                    <li class="index__home">
+                        <button>Home</button>
+                    </li>
+                    <li class="index__about">
+                        <button>About</button>
+                    </li>
+                    <li class="index__skills">
+                        <button>Skills</button>
+                    </li>
+                    <li class="index__mywork">
+                        <button>My work</button>
+                    </li>
+                    <li class="index__testimonial">
+                        <button>Testimonial</button>
+                    </li>
+                    <li class="index__contact">
+                        <button>Contact</button>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div class="profile__photo">
+            <img src="imgs/시지프철학.png" alt="">
+        </div>
+        <div class="title">
+            Hello, <!-- 두 문장 한번에 쓰기. \n 같은거 없나-->
+        </div>
+        <div class="title">
+            I'm Euijin Kim <!-- I'm {my name} 이런식으로 변수로 사용하고 싶다.-->
+        </div>
+        <div class="subtitle">
+            A software Engineer currently residing in Seoul, Korea.
+        </div>
+        <div class="profile__contact">
+            <button class="profile__contact__btn">CONTACT ME</button>
+        </div>
+    </section>
+    <section class="aboutme">
+        <div class="title">
+            About Me
+        </div>
+        <div class="description">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui quae suscipit velit esse quam vel incidunt eligendi non iste modi assumenda minima, soluta fuga, sapiente veniam fugit aliquam! Dicta, molestiae!
+        </div>
+        <div class="aboutme__stacks">
+            <div class="aboutme__stack">
+                <div class="aboutme__stack__icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="aboutme__stack__title">Front-end</div>
+                <div class="aboutme__stack__detail">HTML, CSS, JavaScript, React, Web APIs</div>
+            </div>
+            <div class="aboutme__stack">
+                <div class="aboutme__stack__icon">
+                    <i class="fab fa-js"></i>
+                </div>
+                <div class="aboutme__stack__title">JavaScript</div>
+                <div class="aboutme__stack__detail">React, React Native</div>
+            </div>
+            <div class="aboutme__stack">
+                <div class="aboutme__stack__icon">
+                    <i class="fab fa-python"></i>
+                </div>
+                <div class="aboutme__stack__title">Python</div>
+                <div class="aboutme__stack__detail">Django</div>
+            </div>   
+        </div>
+
+        <div class="careers">
+            <div class="career">
+                <div class="career__img">
+                    <img src="imgs/CAU.png" alt="">
+                </div>
+                <div class="career__info"> <!-- 얘 이름 지어줘야 하나? 언제 안지어도 되는지 고민하기-->
+                    <div class="career__info__description">
+                        Majoring in Economics at Chung-Ang University
+                    </div>
+                    <div class="career__info__period">
+                        2016 March - Until now
+                    </div>
+                </div>
+            </div>
+
+            <div class="career">
+                <span>
+                    <img src="imgs/CAU.png" alt="">
+                </span>
+                <span class="career__info"> <!-- 얘 이름 지어줘야 하나? 언제 안지어도 되는지 고민하기-->
+                    <div class="career__info__description">
+                        Majoring in Economics at Chung-Ang University
+                    </div>
+                    <div class="career__info__period">
+                        2016 March - Until now
+                    </div>
+                </span>
+            </div>
+        </div>
+    </section>
+    <section class="skills">
+
+    </section>
+    <section class="mywork"></section>
+    <section class="testimonial"></section>
+    <section class="contact"></section>
 </body>
 </html>
