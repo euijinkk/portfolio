@@ -15,63 +15,60 @@
     <script src="main.js" defer></script>
 </head>
 <body>
-
+    <!-- ctrl+/ -->
+    <!-- navbar -->
+    <nav id="navbar">
+        <div class="navbar__logo">
+            <span>
+                <i class="fas fa-book-open"></i>
+            </span>
+            <a href="#">김의진</a>
+        </div>
+        <div class="index">
+            <ul>
+                <li class="index__home active">
+                    Home
+                </li>
+                <li class="index__about">
+                    About
+                </li>
+                <li class="index__skills">
+                    Skills
+                </li>
+                <li class="index__mywork">
+                    My work
+                </li>
+                <li class="index__testimonial">
+                    Testimonial
+                </li>
+                <li class="index__contact">
+                    Contact
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Profile -->
     <section class="profile">
-        <header>
-            <div class="logo">
-                <span>
-                    <i class="fas fa-book-open"></i>
-                </span>
-                <span class="name">
-                    김의진
-                </span>
-            </div>
-            <div class="index">
-                <ul>
-                    <li class="index__home">
-                        <button>Home</button>
-                    </li>
-                    <li class="index__about">
-                        <button>About</button>
-                    </li>
-                    <li class="index__skills">
-                        <button>Skills</button>
-                    </li>
-                    <li class="index__mywork">
-                        <button>My work</button>
-                    </li>
-                    <li class="index__testimonial">
-                        <button>Testimonial</button>
-                    </li>
-                    <li class="index__contact">
-                        <button>Contact</button>
-                    </li>
-                </ul>
-            </div>
-        </header>
-        <div class="profile__photo">
-            <img src="imgs/시지프철학.png" alt="">
-        </div>
-        <div class="title">
-            Hello, <!-- 두 문장 한번에 쓰기. \n 같은거 없나-->
-        </div>
-        <div class="title">
-            I'm Euijin Kim <!-- I'm {my name} 이런식으로 변수로 사용하고 싶다.-->
-        </div>
-        <div class="subtitle">
+        
+        <img src="imgs/시지프철학.png" alt=""
+        class="profile__photo">
+
+        <h1 class="title">
+            Hello, <br/> I'm Euijin Kim<!-- 두 문장 한번에 쓰기. \n 같은거 없나-->
+        </h1>
+        <h2 class="subtitle">
             A software Engineer currently residing in Seoul, Korea.
-        </div>
-        <div class="profile__contact">
-            <button class="profile__contact__btn">CONTACT ME</button>
-        </div>
+        </h2>
+        <button class="profile__contact__btn">CONTACT ME</button>
     </section>
+    <!-- About Me -->
     <section class="aboutme">
-        <div class="title">
+        <h1 class="title">
             About Me
-        </div>
-        <div class="description">
+        </h1>
+        <p class="description">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui quae suscipit velit esse quam vel incidunt eligendi non iste modi assumenda minima, soluta fuga, sapiente veniam fugit aliquam! Dicta, molestiae!
-        </div>
+        </p>
         <div class="aboutme__stacks">
             <div class="aboutme__stack">
                 <div class="aboutme__stack__icon">
@@ -98,39 +95,94 @@
 
         <div class="careers">
             <div class="career">
-                <div class="career__img">
-                    <img src="imgs/CAU.png" alt="">
-                </div>
+                <img src="imgs/CAU.png" alt="">
                 <div class="career__info"> <!-- 얘 이름 지어줘야 하나? 언제 안지어도 되는지 고민하기-->
-                    <div class="career__info__description">
+                    <p class="career__info__description">
                         Majoring in Economics at Chung-Ang University
-                    </div>
-                    <div class="career__info__period">
+                    </p>
+                    <p class="career__info__period">
                         2016 March - Until now
-                    </div>
+                    </p>
                 </div>
             </div>
 
             <div class="career">
-                <span>
-                    <img src="imgs/CAU.png" alt="">
-                </span>
-                <span class="career__info"> <!-- 얘 이름 지어줘야 하나? 언제 안지어도 되는지 고민하기-->
-                    <div class="career__info__description">
+                <img src="imgs/CAU.png" alt="">
+                <div class="career__info"> <!-- 얘 이름 지어줘야 하나? 언제 안지어도 되는지 고민하기-->
+                    <p class="careaer__info__description">
                         Majoring in Economics at Chung-Ang University
-                    </div>
-                    <div class="career__info__period">
+                    </p>
+                    <p class="career__info__period">
                         2016 March - Until now
-                    </div>
-                </span>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
+    <!-- Skills -->
     <section class="skills">
+        <h1>Skills</h1>
+        <h2>Skills & Attributes</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nemo distinctio asperiores officia. Aperiam odio omnis non? In quo quos tenetur, facilis similique nulla architecto dignissimos debitis at, exercitationem natus.</p>
+        
+    </section>
+    <!-- My work -->
+    <section class="mywork">
+        <h1>My work</h1>
+        <p>Projects</p>
+        <ul>
+            <li><button>All</button></li>
+            <li><button>Front-end</button></li>
+            <li><button>Back-end</button></li>
+            <li><button>Mobile</button></li>
+        </ul>
 
     </section>
-    <section class="mywork"></section>
-    <section class="testimonial"></section>
-    <section class="contact"></section>
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <h1>Testimonials</h1>
+        <p>see what ther say about me</p>
+        <div class="testimonial__box">
+            <img src="imgs/증명사진.jpg" alt="">
+            <div class="testimonial__box__comment">
+                <div>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsum laudantium atque eos expedita sit debitis, neque voluptatibus adipisci nesciunt beatae mollitia quibusdam, deserunt hic ipsam? Qui fugit officiis assumenda?
+                </div>
+                <div>
+                    김의진 / 손예진
+                </div>
+            </div>
+        </div>
+        <div class="testimonial__box">
+            <div class="testimonial__box__comment">
+                <div>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsum laudantium atque eos expedita sit debitis, neque voluptatibus adipisci nesciunt beatae mollitia quibusdam, deserunt hic ipsam? Qui fugit officiis assumenda?
+                </div>
+                <div>
+                    김의진 / 손예진
+                </div>
+            </div>
+            <img src="imgs/증명사진.jpg" alt="">
+        </div>
+    </section>
+    <!-- Contact -->
+    <section class="contact">
+        <h1>Let's talk</h1>
+        <h2>gytks4@naver.com</h2>
+        
+        <!-- 왜 안나오는 걸까? -->
+        <a href="https://github.com/gytks4" class="contact__github">
+            <i class="fab fa-github">
+            </i>
+        </a>
+        
+        <a href="https://blog.naver.com/gytks4" class="contact__naver">
+
+        </a>
+        <a href="https://www.instagram.com/sisyphe_philo/" class="contact__instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <p>2021 EuiJin Kim - All rights reversed</p>
+    </section>
 </body>
 </html>

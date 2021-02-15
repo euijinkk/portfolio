@@ -18,23 +18,41 @@
 }
 
 body {
-  margin: var(--spacing);
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  cursor: default;
+}
+
+section {
+  text-align: center;
+  padding: 50px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 ul {
   list-style: none;
+  padding-left: 0;
 }
 
 button {
   border-style: none;
-
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
   /* 투명색 어케하노*/
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
 .title {
-  font-weight: bold;
+  /*font-weight: bold;
   font-size: var(--font-large);
-  margin-bottom: 12px;
+  margin-bottom: 12px;*/
 }
 
 .description {
@@ -43,41 +61,62 @@ button {
   font-size: 12px;
 }
 
-/* header */
-header {
-  padding: var(--spacing);
+/* navbar */
+nav {
+  padding: 20px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  position: sticky;
-  top: 0;
+  align-items: center;
   width: 100%;
+  position: absolute;
 }
 
-header .index ul {
+.navbar__logo {
+  font-size: 25px;
+  /*font-weight: ;*/
+}
+
+nav .index ul {
   display: flex;
   align-items: flex-start;
 }
 
-header .index ul button {
+nav .index ul li {
   color: white;
   background-color: transparent;
+  cursor: pointer;
+}
+
+nav .index ul li.active {
+  border: 1px solid white;
+  border-radius: 4px;
+}
+
+nav .index ul li:hover {
+  background-color: pink;
+  border-radius: 4px;
 }
 
 /* profile */
 
 .profile {
-  display: flex;
+  /*display: flex;
   flex-direction: column;
-  align-items: center;
-  background-image: url(imgs/edinburg.JPG);
-  background-size: cover;
-  background-position: 50% 50%;
+  align-items: center;*/
+  text-align: center;
+  /* text-align 과 위 세문장간의 차이가 없구나 */
+  background: url("imgs/edinburg.JPG") center/cover no-repeat;
+  /* background image 쉽게 표현하는 법 */
+  /*background-image: url("imgs/edinburg.JPG") center/cover no-repeat;
+  background-size: cover; 
+  background-position: 50% 50%; */
   /* 사진 정상적으로 보이려면 어떻게 하나? */
 }
 
-.profile .profile__photo img {
+.profile .profile__photo {
   /* 사진 크기 조절하고 싶다. */
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   border-color: white;
   border-style: solid;
@@ -88,51 +127,74 @@ header .index ul button {
   color: white;
 }
 
-.profile .profile__contact__btn {
-  margin: var(--spacing);
+.profile__contact__btn {
+  margin: 24px;
   background-color: transparent;
   color: white;
-  outline: 1px solid;
-  border-radius: 10%; /* outline 의 border radius를 설정하고 싶다*/
+  padding: 8px 12px;
+  border: 2px solid;
+  border-radius: 4px; /* outline 의 border radius를 설정하고 싶다*/
 }
 
 /* aboutme */
 
 .aboutme {
-  display: flex;
+  /*display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;*/
   padding-top: 30px;
 }
 
 .aboutme__stacks {
   display: flex;
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
-  margin-bottom: 30px;
+  margin: 80px 0;
   /* 안에 3개 같은 크기로 할당하고 싶다 */
 }
 
 .aboutme__stack {
-  display: flex;
+  /*display: flex;
   flex-direction: column;
   align-content: center;
-  text-align: center;
+  text-align: center;*/
+  flex-basis: 100%;
+  /* 3등분 해주는 방법*/
+}
+
+.aboutme__stack__icon {
+  width: 170px;
+  height: 170px;
+  font-size: 70px;
+  line-height: 170px;
+  /* 수직 중간정렬하는법. line-height 을 높이만큼 */
+  margin: auto;
+  /* margin이 한쪽으로 기울었을때 수평중간정렬 */
+  color: blue;
+  border: 1px solid blue;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.aboutme__stack__icon i {
+  transition: all 300ms ease;
+  /* animation을 주는 법. 250~350이 적절한 속도 */
+}
+
+.aboutme__stack__icon:hover i {
+  /* 고급기술. icon div에 hover 되었을때, i만 상태 변경 */
+  color: pink;
+  /* 상태변화 -transform */
+  transform: rotate(-30deg) scale(1.1);
 }
 
 .aboutme .career {
   display: flex;
-  flex-direction: row;
+  /*flex-direction: row;*/
   /* 이친구 왼쪽으로 어떻게 보내나.
-  align-items: flex-start;
-  text-align: left;
-  align-content: flex-start;
+  
   */
-}
-.aboutme .career .career__img {
-  width: 30px;
-  height: 30px;
 }
 
 .aboutme .career img {
@@ -144,4 +206,5 @@ header .index ul button {
 
 .aboutme .career .career__info {
   margin-left: 10px;
+  text-align: left;
 }
