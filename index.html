@@ -15,7 +15,7 @@
     <script src="main.js" defer></script>
 </head>
 <body>
-    <!-- ctrl+/ -->
+    <!-- ctrl+/ --> 
     <!-- navbar -->
     <nav id="navbar">
         <div class="navbar__logo">
@@ -125,64 +125,142 @@
         <h2>Skills & Attributes</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nemo distinctio asperiores officia. Aperiam odio omnis non? In quo quos tenetur, facilis similique nulla architecto dignissimos debitis at, exercitationem natus.</p>
         
+        <div class="skillset">
+            <div class="skillset__left">
+                <div class="skillset_title">Skills</div>
+                <div class="skill">
+                    <div class="skill__description">
+                        <div class="">HTML</div>
+                        <div class="">99%</div>
+                    </div>
+                    <div class="skill__bar">
+                        <div class="skill__value"></div>
+
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="skill__description">
+                        <div class="">CSS</div>
+                        <div class="">90%</div>
+                    </div>
+                    <div class="skill__bar">
+                        <div class="skill__value"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="skillset__right">
+                <div class="tools">
+                    <div class="skillset__title">Tools</div>
+                    <ul class="tools_list">
+                        <li><span>Visual Studio</span></li>
+                        <li><span>Android development tools</span></li>
+                        <li><span>iOS development tools</span></li>
+                        <li><span></span></li>
+                    </ul>
+
+                </div>
+                <div class="etc">
+                    <div class="skillset__title">Etc</div>
+                    <ul class="etc__list">
+                        <li><span>Git</span></li>
+                        <li><span>Statistics</span></li>
+                        <li><span></span></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
     </section>
     <!-- My work -->
     <section class="mywork">
         <h1>My work</h1>
         <p>Projects</p>
-        <ul>
-            <li><button>All</button></li>
-            <li><button>Front-end</button></li>
-            <li><button>Back-end</button></li>
-            <li><button>Mobile</button></li>
-        </ul>
+        <div class="work__categories">
+            <button>
+                All<span class="category__count">8</span>
+            </button>
+            <button>
+                Front-end<span class="category__count">3</span>
+            </button>
+            <button>
+                Back-end<span class="category__count">3</span>
+            </button>
+            <button>
+                Mobile<span class="category__count">2</span>
+            </button>
+        </div>
+
+        <div class="work__projects">
+            <a 
+                href=""
+                class="project"
+                target="blank" 
+            >
+                     <!-- 새로운 창에서 열리도록  -->
+                <img class="projcet__img" src="" alt="">
+                <div class="project__description">
+                    <h3>Youtube Site</h3>
+                    <span>Clone coding with HTML and CSS</span>
+                </div>
+                <!-- png compressure or img resize 를 통해 이미지를 줄인다  -->
+            </a>
+        </div>
 
     </section>
     <!-- Testimonial -->
     <section class="testimonial">
         <h1>Testimonials</h1>
-        <p>see what ther say about me</p>
+        <h3>see what ther say about me</h3>
         <div class="testimonial__box">
             <img src="imgs/증명사진.jpg" alt="">
             <div class="testimonial__box__comment">
-                <div>
+                <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsum laudantium atque eos expedita sit debitis, neque voluptatibus adipisci nesciunt beatae mollitia quibusdam, deserunt hic ipsam? Qui fugit officiis assumenda?
-                </div>
-                <div>
-                    김의진 / 손예진
-                </div>
+                </p>
+                <p class="name">
+                    <a href="">김의진</a> Samsung
+                </p>
             </div>
         </div>
         <div class="testimonial__box">
             <div class="testimonial__box__comment">
-                <div>
+                <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsum laudantium atque eos expedita sit debitis, neque voluptatibus adipisci nesciunt beatae mollitia quibusdam, deserunt hic ipsam? Qui fugit officiis assumenda?
-                </div>
-                <div>
-                    김의진 / 손예진
-                </div>
+                </p>
+                <p class="name">
+                    <a href="">김의진</a> Samsung
+                </p>
             </div>
             <img src="imgs/증명사진.jpg" alt="">
         </div>
     </section>
     <!-- Contact -->
     <section class="contact">
-        <h1>Let's talk</h1>
-        <h2>gytks4@naver.com</h2>
+        <h1 class="contact__title">Let's talk</h1>
+        <h2 class="contact__email">gytks4@naver.com</h2>
         
         <!-- 왜 안나오는 걸까? -->
-        <a href="https://github.com/gytks4" class="contact__github">
-            <i class="fab fa-github">
-            </i>
-        </a>
+        <div class="contact__links">
+            <a href="https://github.com/gytks4" class="contact__github"
+                target="_blank">
+                <i class="fab fa-github">
+                </i>
+            </a>
+            
+            <a href="https://blog.naver.com/gytks4" class="contact__naver"
+                target="_blank">
+    
+            </a>
+            <a href="https://www.instagram.com/sisyphe_philo/" class="contact__instagram"
+                target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
         
-        <a href="https://blog.naver.com/gytks4" class="contact__naver">
-
-        </a>
-        <a href="https://www.instagram.com/sisyphe_philo/" class="contact__instagram">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <p>2021 EuiJin Kim - All rights reversed</p>
+        <p class="contact__rights">2021 EuiJin Kim - All rights reversed</p>
     </section>
 </body>
 </html>
