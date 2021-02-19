@@ -26,6 +26,9 @@
   --weight-bold: 700;
   --weight-semi-bold: 600;
   --weight-regular: 400;
+
+  /* Size */
+  --size-border-radius: 4px;
 }
 
 /* Typography */
@@ -93,7 +96,7 @@ button {
 
 a {
   text-decoration: none;
-  color: white;
+  color: var(--color-white);
 }
 
 .title {
@@ -110,38 +113,41 @@ a {
 
 /* navbar */
 nav {
-  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   position: absolute;
+  color: var(--color-white);
+  padding: 16px;
 }
 
 .navbar__logo {
-  font-size: 25px;
+  font-size: var(--font-medium);
+  font-weight: var(--weight-semi-bold);
   /*font-weight: ;*/
 }
 
 nav .index ul {
   display: flex;
-  align-items: flex-start;
+  /* align-items: flex-start; */
 }
 
 nav .index ul li {
-  color: white;
+  padding: 8px 12px;
+  margin: 0 4px;
+
   background-color: transparent;
   cursor: pointer;
+  border-radius: var(--size-border-radius);
 }
 
 nav .index ul li.active {
-  border: 1px solid white;
-  border-radius: 4px;
+  border: 1px solid var(--color-white);
 }
 
 nav .index ul li:hover {
-  background-color: pink;
-  border-radius: 4px;
+  background-color: var(--color-dark-pink);
 }
 
 /* profile */
