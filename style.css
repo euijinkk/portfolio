@@ -137,6 +137,10 @@ nav {
   /*font-weight: ;*/
 }
 
+.navbar__logo i {
+  margin-right: 8px;
+}
+
 nav .index ul {
   display: flex;
   /* align-items: flex-start; */
@@ -157,6 +161,19 @@ nav .index ul li.active {
 
 nav .index ul li:hover {
   background-color: var(--color-dark-pink);
+}
+
+.navbar__toggle-btn {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  /* 오른쪽끝에서 32px 떨어진 곳으로 보낸다 */
+  font-size: 28px;
+  color: var(--color-white);
+  display: none;
+  /* opacity:0; 과의 차이점
+  display는 아예 없는 것이 되는 것이고
+  opacity는 불투명하지만 존재하여 클릭이 가능한 것이 된다 */
 }
 
 /* profile */
@@ -450,11 +467,6 @@ nav .index ul li:hover {
   /* 이미지 크기를 통일. project박스 안에서 놀도록 */
 }
 
-/* 미디어쿼리를 이용하여 작아지면 2,3개만 나오도록 하자 */
-
-@media screen and (max-width: 768px) {
-}
-
 .project__description {
   position: absolute;
   /* 부모값중 static이 아닌 것을 기준으로 위치한다. */
@@ -568,4 +580,41 @@ nav .index ul li:hover {
 
 .contact__links a i:hover {
   transform: scale(1.2);
+}
+
+@media screen and (max-width: 768px) {
+  /* mobile navbar */
+  .navbar__toggle-btn {
+    display: block;
+  }
+  #navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #navbar .index ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  #navbar .index {
+    width: 100%;
+    display: none;
+    /* toggle 될때만 보이도록 만들자 */
+  }
+  /* mobile aboutme */
+  .aboutme__stacks {
+    flex-direction: column;
+  }
+  .aboutme__stack {
+    margin-bottom: 38px;
+  }
+  /* mobile skills */
+  .skillset {
+    flex-direction: column;
+  }
+
+  /* mobile mywork */
+  .project {
+    flex-grow: 1;
+    /* project가 화면을 채우게 만들자 */
+  }
 }
