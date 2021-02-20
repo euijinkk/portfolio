@@ -366,3 +366,131 @@ nav .index ul li:hover {
   /* height: 100%; */
   padding: 20px;
 }
+
+/* Work */
+
+.work__categories {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* 아하 수평방향 : justify-content */
+  margin-bottom: 30px;
+}
+
+.work__categories button {
+  border: 1px solid var(--color-light-grey);
+  padding: 8px 48px;
+  border-radius: var(--size-border-radius);
+  margin: 0;
+  font-size: var(--font-regular);
+}
+
+.work__categories button.active,
+.work__categories button:hover {
+  background-color: var(--color-pink);
+  color: var(--color-white);
+}
+
+.category__count {
+  color: var(--color-white);
+  border: 1px solid transparent;
+  border-radius: 50%;
+  display: inline-block;
+  /* span은 글자를 꽉 잡아주기 때문에, 변형이 힘들다
+  inline-block으로 바꾸면 width와 height를 지정할 수 있다. */
+  width: 24px;
+  height: 24px;
+  /* 수직 중간정렬 하는 법 */
+  line-height: 24px;
+
+  position: relative;
+  top: -20px;
+  left: 4px;
+  opacity: 0;
+  transition: all var(--animation-duration) ease-in;
+}
+
+.work__categories button.active .category__count,
+.work__categories button:hover .category__count {
+  background-color: var(--color-orange);
+  opacity: 1;
+  /* 이때만 보이도록. 내려오는 애니메이션 */
+  top: 0;
+}
+
+.work__projects {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* 한줄에 꽉차면 자동으로 내려가는 기능 */
+}
+
+.project {
+  position: relative;
+  /* 기본값 static이 아닌 것으로 바꿔준다. */
+  width: 280px;
+  height: 250px;
+  background-color: var(--color-dark-white);
+  margin: 2px;
+
+  /* 하나밖에 없지만, 중간정렬하기 위한 방법 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 이미지는 크기 조정이 마음대로 안되기 때문에, line-height 같은 방법이 적용되지 않는다 */
+}
+
+.project__img {
+  max-width: 100%;
+  max-height: 100%;
+  /* 이미지 크기를 통일. project박스 안에서 놀도록 */
+}
+
+/* 미디어쿼리를 이용하여 작아지면 2,3개만 나오도록 하자 */
+
+@media screen and (max-width: 768px) {
+}
+
+.project__description {
+  position: absolute;
+  /* 부모값중 static이 아닌 것을 기준으로 위치한다. */
+  top: 0;
+  left: 0;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+
+  /* 수직 중간정렬 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  /* 마우스가 올라가지 않았을때는 0 */
+  transform: translateY(10px);
+  /* 마우스가 올라가지 않았을때는 밑에 내려가있도록
+  -> hover 될때 올라오는 느낌을 준다 */
+
+  transition: all var(--animation-duration) ease-in;
+}
+
+.project:hover .project__description {
+  opacity: 0.8;
+  transform: translateY(0px);
+}
+
+.project__description h3 {
+  color: var(--color-white);
+}
+.project__description h3:after {
+  content: "";
+  display: block;
+  position: relative;
+  left: 50%;
+  margin-left: -12px;
+  /* 왼쪽으로 당겨오기 */
+  margin-top: 8px;
+  width: 25px;
+  height: 2px;
+  background-color: var(--color-dark-white);
+}
