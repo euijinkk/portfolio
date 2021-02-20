@@ -213,6 +213,9 @@ nav .index ul li:hover {
   align-items: center;*/
   padding-top: 30px;
 }
+.aboutme > p {
+  margin: auto;
+}
 
 .aboutme__stacks {
   display: flex;
@@ -493,4 +496,76 @@ nav .index ul li:hover {
   width: 25px;
   height: 2px;
   background-color: var(--color-dark-white);
+}
+
+/* testimonial */
+
+.testimonial {
+  background-color: var(--color-light-white);
+}
+
+.testimonial__box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.testimonial__box img {
+  /* max-width: 200px;
+  max-height: 150px; */
+  height: 150px;
+  border-radius: 50%;
+}
+
+.testimonial__box img:nth-child(odd) {
+  margin-right: 40px;
+}
+/* 홀수일때 짝수일때 구분하기 */
+.testimonial__box img:nth-child(even) {
+  margin-left: 40px;
+}
+
+.comment {
+  background-color: var(--color-white);
+  padding: 16px;
+  border-radius: var(--size-border-radius);
+}
+
+.comment p {
+  color: var(--color-light-grey);
+}
+
+.comment .name a {
+  color: var(--color-pink);
+}
+
+/* contact */
+
+.contact {
+  background-color: var(--color-dark-pink);
+}
+
+.contact__title,
+.contact__email,
+.contact__rights {
+  color: var(--color-white);
+}
+
+.contact__links {
+  margin: 16px;
+}
+
+.contact__links a {
+  font-size: var(--font-large);
+  /* 이미지 크기는 font size로 조절하구나 */
+  margin: 2px;
+}
+
+.contact__links a i {
+  transition: all var(--animation-duration) ease-in;
+}
+
+.contact__links a i:hover {
+  transform: scale(1.2);
 }
