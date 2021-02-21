@@ -132,6 +132,9 @@ nav {
 
   transition: all var(--animation-duration) ease-in-out;
   /* navbar--dark가 animation */
+
+  z-index: 1;
+  /* overlap 될때 가장 위에 놓이도록 */
 }
 
 .navbar__logo {
@@ -235,7 +238,6 @@ nav .index ul li:hover {
   /*display: flex;
   flex-direction: column;
   align-items: center;*/
-  padding-top: 30px;
 }
 .aboutme > p {
   margin: auto;
