@@ -456,10 +456,18 @@ nav .index ul li:hover {
   justify-content: center;
   flex-wrap: wrap;
   /* 한줄에 꽉차면 자동으로 내려가는 기능 */
+
+  transition: all var(--animation-duration) ease-out;
+  /* 빨리 없어지고 천천히 올라오도록 만들자. */
+}
+
+.work__projects.anim-out {
+  opacity: 0;
+  transform: scale(0.96) translate(40px);
 }
 
 .project {
-  position: relative;
+  /* position: relative; */
   /* 기본값 static이 아닌 것으로 바꿔준다. */
   width: 280px;
   height: 250px;
@@ -470,6 +478,10 @@ nav .index ul li:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
   /* 이미지는 크기 조정이 마음대로 안되기 때문에, line-height 같은 방법이 적용되지 않는다 */
 }
 
@@ -520,6 +532,12 @@ nav .index ul li:hover {
   width: 25px;
   height: 2px;
   background-color: var(--color-dark-white);
+}
+
+.project.invisible {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
 }
 
 /* testimonial */

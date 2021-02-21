@@ -83,3 +83,95 @@ function scrollIntoView(selector) {
     scrollTo.scrollIntoView({behavior:'smooth'});
 };
 
+// projectBtns[1].addEventListener('click', () =>{
+//     filterProject(projectBtn[1].dataset.stack);
+// })
+
+// projectBtns[2].addEventListener('click', () =>{
+//     filterProject("backEnd");
+// })
+
+// projectBtns[3].addEventListener('click', () =>{
+//     filterProject("mobile");
+// })
+
+// projectBtns[0].addEventListener('click', ()=>{
+//     for (let project of projects){
+//         project.classList.remove("invisible");
+//     };
+// })
+
+const projectContainer = document.querySelector('.work__projects');
+const projects = document.querySelectorAll('.project');
+
+const workBtnContainer = document.querySelector('.work__categories');
+const projectBtns = document.querySelectorAll('.work__categories button');
+
+
+// 1. 버튼 개수가 아무리 많아져도 코드 수정이 적어야한다.
+// 2. stack의 이름이 바뀌어도 코드 수정이 적어야 한다.
+// => project와 btn을 array로 받자.
+
+function filterProject(stack) {
+    if (stack==null){
+        // work__categories 중 빈곳을 택했을 때,
+        return;
+    } else {if (stack==="All"){
+        for (let project of projects) {
+            project.classList.remove("invisible");
+        }
+    } else {
+        // projects.forEach((project) => {}) 와 같다.
+        for (let project of projects) {
+            if (project.dataset.stack != stack) {
+                project.classList.add("invisible");
+            } else {
+                project.classList.remove("invisible");
+            }
+        }
+    }
+    }
+}
+
+// callback 해오면, 효율적이다.
+workBtnContainer.addEventListener('click', (e) => {
+    
+    projectContainer.classList.add('anim-out');    
+    setTimeout(()=>{
+        // 비동기적으로 발생하도록.
+        // 기존의 것이 anim-out되고, 0.3초 후에 filtering 하게 하자.
+        // brower에게 0.3초 후에 실행하도록 부탁하는 API이다.
+        projectContainer.classList.remove('anim-out');  
+        filterProject(e.target.dataset.stack);  
+    },300)
+
+    for (let Btn of projectBtns) {
+        if (Btn == e.target) {
+            Btn.classList.add("active");
+        } else {
+            Btn.classList.remove("active");
+        }
+    }
+})
+
+
+
+// for (let projectBtn of projectBtns) {
+//     clickProject(projectBtn);
+// };
+
+// function clickProject (projectBtn) {
+//     projectBtn.addEventListener('click', () =>{
+//         console.log(projectBtn.dataset.stack);
+//         filterProject(projectBtn.dataset.stack);
+        
+//         for (let Btn of projectBtns) {
+//             if (Btn == projectBtn) {
+//                 Btn.classList.add("active");
+//             } else {
+//                 Btn.classList.remove("active");;
+//             }
+//         }
+        
+//     })
+// };
