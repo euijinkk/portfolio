@@ -7,30 +7,44 @@ const home = document.querySelector('#home');
 const homeContainer = document.querySelector('.home__container');
 const homeHeight = home.getBoundingClientRect().height;
 
+const arrowBtn = document.querySelector('.arrow-btn');
 
-// Make navbar transparent when it is on the top
 document.addEventListener('scroll',() => {
-    
+    // Make navbar transparent when it is on the top
     if(window.scrollY > navbarHeight) {
         navbar.classList.add('navbar--dark');
     } else {
         navbar.classList.remove('navbar--dark');
     };
     
+    // Make home transparent when window is scrolled
     if(window.scrollY > homeHeight) {
+        
+        // arrowBtn.style.visibility = "visible";
         return;
     } else if (window.scrollY > homeHeight/4) {
-        console.log(`Y : ${window.scrollY}`);
-        console.log(`Height : ${homeHeight}`);
-        console.log(`navHeight : ${navbarHeight}`);
-        console.log(`${(1- (window.scrollY/homeHeight))}`);
-
+        
         homeContainer.style.opacity = (1- (window.scrollY/homeHeight));
-        // home.style.opacity = "0.5";
-    } else{
+        // arrowBtn.style.visibility = "hidden";
+    } else {
         homeContainer.style.opacity = 1;
+        // arrowBtn.style.visibility = "hidden";
     };
+
     
+});
+
+// Handle click on the "arrow button"
+document.addEventListener('scroll', () => {
+    if (window.scrollY > homeHeight-navbarHeight) {
+        arrowBtn.classList.add('visible');
+    } else {
+        arrowBtn.classList.remove('visible')
+    }
+})
+
+arrowBtn.addEventListener('click',() =>{
+    scrollIntoView('#home');
 });
 
 

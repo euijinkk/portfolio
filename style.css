@@ -630,3 +630,35 @@ nav .index ul li:hover {
     /* project가 화면을 채우게 만들자 */
   }
 }
+
+/* arrow up button */
+.arrow-btn {
+  background-color: var(--color-grey);
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 45px;
+  /* display: none; */
+  /* visibility: hidden; */
+  opacity: 0;
+  color: var(--color-white);
+  /* 왜 애니메이션이 안되지? 
+  - display:none은 아예 없애버리는 것이기에 animation을 적용할 수 없다.*/
+  pointer-events: none;
+  transition: opacity var(--animation-duration) ease-in-out;
+}
+
+.arrow-btn.visible {
+  /* display: block; */
+  /* visibility: visible; */
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.arrow-btn i {
+  margin-top: 7px;
+}
