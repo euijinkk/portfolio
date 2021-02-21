@@ -3,6 +3,10 @@
 const navbar = document.querySelector('#navbar');
 const navbarHeight = navbar.getBoundingClientRect().height;
 
+const home = document.querySelector('#home');
+const homeContainer = document.querySelector('.home__container');
+const homeHeight = home.getBoundingClientRect().height;
+
 
 // Make navbar transparent when it is on the top
 document.addEventListener('scroll',() => {
@@ -11,7 +15,22 @@ document.addEventListener('scroll',() => {
         navbar.classList.add('navbar--dark');
     } else {
         navbar.classList.remove('navbar--dark');
-    }
+    };
+    
+    if(window.scrollY > homeHeight) {
+        return;
+    } else if (window.scrollY > homeHeight/4) {
+        console.log(`Y : ${window.scrollY}`);
+        console.log(`Height : ${homeHeight}`);
+        console.log(`navHeight : ${navbarHeight}`);
+        console.log(`${(1- (window.scrollY/homeHeight))}`);
+
+        homeContainer.style.opacity = (1- (window.scrollY/homeHeight));
+        // home.style.opacity = "0.5";
+    } else{
+        homeContainer.style.opacity = 1;
+    };
+    
 });
 
 
@@ -34,7 +53,7 @@ navbarIndex.addEventListener('click', (event) => {
 });
 
 // Handle click on "contact me" button on home
-const contactmeBtn = document.querySelector('.profile__contact__btn');
+const contactmeBtn = document.querySelector('.home__contact__btn');
 
 contactmeBtn.addEventListener('click', () => {
 
@@ -49,3 +68,4 @@ function scrollIntoView(selector) {
     const scrollTo = document.querySelector(selector);
     scrollTo.scrollIntoView({behavior:'smooth'});
 };
+
