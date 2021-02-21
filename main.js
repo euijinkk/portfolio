@@ -12,11 +12,11 @@ document.addEventListener('scroll',() => {
     } else {
         navbar.classList.remove('navbar--dark');
     }
-})
+});
 
 
 // Handle scrolling when tapping on the navbar menu
-const navbarIndex = document.querySelector('.index ul')
+const navbarIndex = document.querySelector('.index ul');
 navbarIndex.addEventListener('click', (event) => {
     // console.log(event.target);
 
@@ -27,8 +27,25 @@ navbarIndex.addEventListener('click', (event) => {
         // 이때는 함수를 실행시키지 않고, 빠르게 return하는게 효율적이다.
         return;
     } else {
-        console.log(link);
-        const scrollTo = document.querySelector(link);
-        scrollTo.scrollIntoView({behavior:'smooth'});
+        // const scrollTo = document.querySelector(link);
+        // scrollTo.scrollIntoView({behavior:'smooth'});
+        scrollIntoView(link);
     }
-})
+});
+
+// Handle click on "contact me" button on home
+const contactmeBtn = document.querySelector('.profile__contact__btn');
+
+contactmeBtn.addEventListener('click', () => {
+
+    scrollIntoView('#contact');
+    // const scrollTo = document.querySelector(#contact);
+    // scrollTo.scrollIntoView({behavior:'smooth'});
+    // 2회 반복해서 쓰이니 함수화하자.
+
+});
+
+function scrollIntoView(selector) {
+    const scrollTo = document.querySelector(selector);
+    scrollTo.scrollIntoView({behavior:'smooth'});
+};
