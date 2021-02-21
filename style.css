@@ -126,9 +126,12 @@ nav {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  position: absolute;
+  position: fixed;
   color: var(--color-white);
   padding: 16px;
+
+  transition: all var(--animation-duration) ease-in-out;
+  /* navbar--dark가 animation */
 }
 
 .navbar__logo {
@@ -176,6 +179,10 @@ nav .index ul li:hover {
   opacity는 불투명하지만 존재하여 클릭이 가능한 것이 된다 */
 }
 
+#navbar.navbar--dark {
+  background-color: black;
+}
+
 /* profile */
 
 .profile {
@@ -191,7 +198,7 @@ nav .index ul li:hover {
   background-size: cover; 
   background-position: 50% 50%; */
 
-  padding: 40px;
+  padding-top: 60px;
 }
 
 .profile .profile__photo {
