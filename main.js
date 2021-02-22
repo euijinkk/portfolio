@@ -7,6 +7,107 @@ const home = document.querySelector('#home');
 const homeContainer = document.querySelector('.home__container');
 const homeHeight = home.getBoundingClientRect().height;
 
+const about = document.querySelector('#about');
+const aboutHeight = about.getBoundingClientRect().height;
+
+const skills = document.querySelector('#skills');
+const skillsHeight = skills.getBoundingClientRect().height;
+
+const work = document.querySelector('#work');
+const workHeight = work.getBoundingClientRect().height;
+
+const testimonial = document.querySelector('#testimonial');
+const testimonialHeight = testimonial.getBoundingClientRect().height;
+
+const contact = document.querySelector('#contact');
+const contactHeight = contact.getBoundingClientRect().height;
+
+
+const menuBtns = document.querySelectorAll('.menu ul li');
+
+// // 형변환 parseInt(), 
+// var 변수 = parseInt(문자);    //문자를 정수형 숫자로 변환해줌
+// var 변수 = parseFloat(문자);     //문자를 실수형 숫자로 변환해줌
+// var 변수 = Nu   mber(문자);    //문자를 정수&실수형 숫자로 변환해줌
+const sectionPaddingBottom = parseInt(window.getComputedStyle(home, null).getPropertyValue('padding-bottom').slice(0,-2));
+
+
+
+document.addEventListener('scroll', () => {
+    
+    let active = document.querySelector('.menu ul li.active');
+
+// 코드가 길다. 수정이 필요하다.
+    if (window.scrollY+sectionPaddingBottom <= about.offsetTop-navbarHeight) {
+        active.classList.remove('active')
+        menuBtns[0].classList.add('active')
+    } else if (window.scrollY+sectionPaddingBottom <= skills.offsetTop-navbarHeight) {
+        active.classList.remove('active')
+        menuBtns[1].classList.add('active')
+    } else if (window.scrollY+sectionPaddingBottom <= work.offsetTop-navbarHeight) {
+        active.classList.remove('active')
+        menuBtns[2].classList.add('active')
+    } else if (window.scrollY+sectionPaddingBottom <= testimonial.offsetTop-navbarHeight) {
+        active.classList.remove('active')
+        menuBtns[3].classList.add('active')
+    } else if (window.scrollY+sectionPaddingBottom <= contact.offsetTop-navbarHeight) {
+        active.classList.remove('active')
+        menuBtns[4].classList.add('active')
+    } else if (window.scrollY+sectionPaddingBottom <= document.body.clientHeight) {
+        active.classList.remove('active')
+        menuBtns[5].classList.add('active')
+    }
+})
+
+document.addEventListener('scroll', () => {
+    menuBtns.forEach((menuBtn) => {
+        menuBorder(menuBtn.dataset.link);
+    })
+})
+
+function menuBorder (menuName) {
+    const menu = document.querySelector(menuName);
+    
+    // menuBtns에서 menuName을 data로 가진 Btn의 index를 구하고,
+    // 거기에 -1한 index 를 찾자.
+    let menuBtnIndex=0;
+    menuBtns.forEach((a) =>{
+        if (a.dataset.link !== menuName) {
+            return;
+        } else {
+            
+            for(let i=0; i<menuBtns.length;i++){
+                if (a.dataset.link !== menuBtns[i].dataset.link){
+                    return;
+                } else {
+                    menuBtnIndex = i;
+                    break;
+                }
+            }
+        }
+    })
+    let menuMinus1 = 0;
+    if (menuBtnIndex === 0) {
+        return;
+    } else {
+        let menuMinus1 = document.querySelector(menuBtns[menuBtnIndex-1].dataset.link);
+    }   
+
+    
+    // 선택된 메뉴 이전에 있는 것
+    
+    if (menuMinus1.offsetTop < window.scrollY && window.scrollY < menu.offsetTop) {
+        menuBtns.forEach((menuBtn) => {
+            if (menuBtn.dataset.link === menuName) {
+                menuBtn.classList.add('active');
+            } else{
+                menuBtn.classList.remove('active');
+            }
+        } )
+    }
+}
+
+
 const arrowBtn = document.querySelector('.arrow-btn');
 
 document.addEventListener('scroll',() => {
@@ -49,8 +150,8 @@ arrowBtn.addEventListener('click',() =>{
 
 
 // Handle scrolling when tapping on the navbar menu
-const navbarIndex = document.querySelector('.index ul');
-navbarIndex.addEventListener('click', (event) => {
+const navbarmenu = document.querySelector('.menu ul');
+navbarmenu.addEventListener('click', (event) => {
     // console.log(event.target);
 
     const target = event.target;
@@ -153,6 +254,8 @@ workBtnContainer.addEventListener('click', (e) => {
         }
     }
 })
+
+
 
 
 

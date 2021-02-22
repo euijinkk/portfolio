@@ -147,12 +147,12 @@ nav {
   margin-right: 8px;
 }
 
-nav .index ul {
+nav .menu ul {
   display: flex;
   /* align-items: flex-start; */
 }
 
-nav .index ul li {
+nav .menu ul li {
   padding: 8px 12px;
   margin: 0 4px;
 
@@ -161,11 +161,11 @@ nav .index ul li {
   border-radius: var(--size-border-radius);
 }
 
-nav .index ul li.active {
+nav .menu ul li.active {
   border: 1px solid var(--color-white);
 }
 
-nav .index ul li:hover {
+nav .menu ul li:hover {
   background-color: var(--color-dark-pink);
 }
 
@@ -621,11 +621,11 @@ nav .index ul li:hover {
     flex-direction: column;
     align-items: flex-start;
   }
-  #navbar .index ul {
+  #navbar .menu ul {
     flex-direction: column;
     align-items: center;
   }
-  #navbar .index {
+  #navbar .menu {
     width: 100%;
     display: none;
     /* toggle 될때만 보이도록 만들자 */
