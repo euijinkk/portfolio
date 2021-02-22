@@ -171,10 +171,10 @@ nav .menu ul li:hover {
 
 .navbar__toggle-btn {
   position: absolute;
-  top: 24px;
+  top: 20px;
   right: 32px;
   /* 오른쪽끝에서 32px 떨어진 곳으로 보낸다 */
-  font-size: 28px;
+  font-size: 32px;
   color: var(--color-white);
   display: none;
   /* opacity:0; 과의 차이점
@@ -519,17 +519,18 @@ nav .menu ul li:hover {
 }
 
 .project__description h3 {
-  color: var(--color-white);
+  color: var(--color-orange);
 }
 .project__description h3:after {
   content: "";
   display: block;
   position: relative;
   left: 50%;
-  margin-left: -12px;
-  /* 왼쪽으로 당겨오기 */
+  /* margin-left: -12px; */
+  /* 왼쪽으로 당겨오기. 중간정렬 */
+  transform: translateX(-50%);
   margin-top: 8px;
-  width: 25px;
+  width: 50px;
   height: 2px;
   background-color: var(--color-dark-white);
 }
@@ -617,7 +618,13 @@ nav .menu ul li:hover {
   .navbar__toggle-btn {
     display: block;
   }
+
+  #home {
+    padding-top: 80px;
+  }
+
   #navbar {
+    background-color: black;
     flex-direction: column;
     align-items: flex-start;
   }
@@ -629,6 +636,9 @@ nav .menu ul li:hover {
     width: 100%;
     display: none;
     /* toggle 될때만 보이도록 만들자 */
+  }
+  #navbar .menu.click {
+    display: block;
   }
   /* mobile aboutme */
   .aboutme__stacks {

@@ -1,7 +1,7 @@
 'use strict'
 
 const navbar = document.querySelector('#navbar');
-const navbarHeight = navbar.getBoundingClientRect().height;
+let navbarHeight = navbar.getBoundingClientRect().height;
 
 const home = document.querySelector('#home');
 const homeContainer = document.querySelector('.home__container');
@@ -25,18 +25,80 @@ const contactHeight = contact.getBoundingClientRect().height;
 
 const menuBtns = document.querySelectorAll('.menu ul li');
 
+const projectContainer = document.querySelector('.work__projects');
+const projects = document.querySelectorAll('.project');
+
+const workBtnContainer = document.querySelector('.work__categories');
+const projectBtns = document.querySelectorAll('.work__categories button');
+
+
+
 // // 형변환 parseInt(), 
 // var 변수 = parseInt(문자);    //문자를 정수형 숫자로 변환해줌
 // var 변수 = parseFloat(문자);     //문자를 실수형 숫자로 변환해줌
 // var 변수 = Nu   mber(문자);    //문자를 정수&실수형 숫자로 변환해줌
 const sectionPaddingBottom = parseInt(window.getComputedStyle(home, null).getPropertyValue('padding-bottom').slice(0,-2));
 
+const arrowBtn = document.querySelector('.arrow-btn');
 
 
-document.addEventListener('scroll', () => {
+
+// document.addEventListener('scroll', () => {
+//     menuBtns.forEach((menuBtn) => {
+//         menuBorder(menuBtn.dataset.link);
+//     })
+// })
+
+// function menuBorder (menuName) {
+//     const menu = document.querySelector(menuName);
     
-    let active = document.querySelector('.menu ul li.active');
+//     // menuBtns에서 menuName을 data로 가진 Btn의 index를 구하고,
+//     // 거기에 -1한 index 를 찾자.
+//     let menuBtnIndex=0;
+//     menuBtns.forEach((a) =>{
+//         if (a.dataset.link !== menuName) {
+//             return;
+//         } else {
+            
+//             for(let i=0; i<menuBtns.length;i++){
+//                 if (a.dataset.link !== menuBtns[i].dataset.link){
+//                     return;
+//                 } else {
+//                     menuBtnIndex = i;
+//                     break;
+//                 }
+//             }
+//         }
+//     })
+//     let menuMinus1 = 0;
+//     if (menuBtnIndex === 0) {
+//         return;
+//     } else {
+//         let menuMinus1 = document.querySelector(menuBtns[menuBtnIndex-1].dataset.link);
+//     }   
 
+    
+//     // 선택된 메뉴 이전에 있는 것
+    
+//     if (menuMinus1.offsetTop < window.scrollY && window.scrollY < menu.offsetTop) {
+//         menuBtns.forEach((menuBtn) => {
+//             if (menuBtn.dataset.link === menuName) {
+//                 menuBtn.classList.add('active');
+//             } else{
+//                 menuBtn.classList.remove('active');
+//             }
+//         } )
+//     }
+// }
+
+
+
+// Navbar
+
+// Scroll 될때마다, Navbar Menu Btn의 border가 바뀌게 하는 기능
+
+document.addEventListener('scroll', () => {    
+    let active = document.querySelector('.menu ul li.active');
 // 코드가 길다. 수정이 필요하다.
     if (window.scrollY+sectionPaddingBottom <= about.offsetTop-navbarHeight) {
         active.classList.remove('active')
@@ -59,56 +121,40 @@ document.addEventListener('scroll', () => {
     }
 })
 
-document.addEventListener('scroll', () => {
-    menuBtns.forEach((menuBtn) => {
-        menuBorder(menuBtn.dataset.link);
-    })
-})
+// Handle scrolling when tapping on the navbar menu
+const navbarMenuList = document.querySelector('.menu ul');
+navbarMenuList.addEventListener('click', (event) => {
+    // console.log(event.target);
+    navbarMenu.classList.remove('click');
 
-function menuBorder (menuName) {
-    const menu = document.querySelector(menuName);
-    
-    // menuBtns에서 menuName을 data로 가진 Btn의 index를 구하고,
-    // 거기에 -1한 index 를 찾자.
-    let menuBtnIndex=0;
-    menuBtns.forEach((a) =>{
-        if (a.dataset.link !== menuName) {
-            return;
-        } else {
-            
-            for(let i=0; i<menuBtns.length;i++){
-                if (a.dataset.link !== menuBtns[i].dataset.link){
-                    return;
-                } else {
-                    menuBtnIndex = i;
-                    break;
-                }
-            }
-        }
-    })
-    let menuMinus1 = 0;
-    if (menuBtnIndex === 0) {
+    const target = event.target;
+    const link = target.dataset.link;
+    if(link==null) {
+        // button말고 빈곳을 클릭했을때, undefined이 나온다.
+        // 이때는 함수를 실행시키지 않고, 빠르게 return하는게 효율적이다.
         return;
     } else {
-        let menuMinus1 = document.querySelector(menuBtns[menuBtnIndex-1].dataset.link);
-    }   
-
-    
-    // 선택된 메뉴 이전에 있는 것
-    
-    if (menuMinus1.offsetTop < window.scrollY && window.scrollY < menu.offsetTop) {
-        menuBtns.forEach((menuBtn) => {
-            if (menuBtn.dataset.link === menuName) {
-                menuBtn.classList.add('active');
-            } else{
-                menuBtn.classList.remove('active');
-            }
-        } )
+        // const scrollTo = document.querySelector(link);
+        // scrollTo.scrollIntoView({behavior:'smooth'});
+        scrollIntoView(link);
     }
-}
+});
+
+// Navbar toggle button for small screen
+const toggleBtn = document.querySelector('.navbar__toggle-btn');
+const navbarMenu = document.querySelector('#navbar .menu');
+
+toggleBtn.addEventListener('click',()=>{
+    navbarMenu.classList.toggle('click')
+    // toggle 되었다는 것을, navbar height가 커졌다는 걸로 표현하고 사용하기 위해
+    // 아직은 쓸일이 없네.
+    // navbarHeight = navbar.getBoundingClientRect().height;
+})
 
 
-const arrowBtn = document.querySelector('.arrow-btn');
+//Home
+
+// Scroll될때, Home이 투명해지는 기능
 
 document.addEventListener('scroll',() => {
     // Make navbar transparent when it is on the top
@@ -135,104 +181,10 @@ document.addEventListener('scroll',() => {
     
 });
 
-// Handle click on the "arrow button"
-document.addEventListener('scroll', () => {
-    if (window.scrollY > homeHeight-navbarHeight) {
-        arrowBtn.classList.add('visible');
-    } else {
-        arrowBtn.classList.remove('visible')
-    }
-})
-
-arrowBtn.addEventListener('click',() =>{
-    scrollIntoView('#home');
-});
 
 
-// Handle scrolling when tapping on the navbar menu
-const navbarmenu = document.querySelector('.menu ul');
-navbarmenu.addEventListener('click', (event) => {
-    // console.log(event.target);
 
-    const target = event.target;
-    const link = target.dataset.link;
-    if(link==null) {
-        // button말고 빈곳을 클릭했을때, undefined이 나온다.
-        // 이때는 함수를 실행시키지 않고, 빠르게 return하는게 효율적이다.
-        return;
-    } else {
-        // const scrollTo = document.querySelector(link);
-        // scrollTo.scrollIntoView({behavior:'smooth'});
-        scrollIntoView(link);
-    }
-});
-
-// Handle click on "contact me" button on home
-const contactmeBtn = document.querySelector('.home__contact__btn');
-
-contactmeBtn.addEventListener('click', () => {
-
-    scrollIntoView('#contact');
-    // const scrollTo = document.querySelector(#contact);
-    // scrollTo.scrollIntoView({behavior:'smooth'});
-    // 2회 반복해서 쓰이니 함수화하자.
-
-});
-
-function scrollIntoView(selector) {
-    const scrollTo = document.querySelector(selector);
-    scrollTo.scrollIntoView({behavior:'smooth'});
-};
-
-// projectBtns[1].addEventListener('click', () =>{
-//     filterProject(projectBtn[1].dataset.stack);
-// })
-
-// projectBtns[2].addEventListener('click', () =>{
-//     filterProject("backEnd");
-// })
-
-// projectBtns[3].addEventListener('click', () =>{
-//     filterProject("mobile");
-// })
-
-// projectBtns[0].addEventListener('click', ()=>{
-//     for (let project of projects){
-//         project.classList.remove("invisible");
-//     };
-// })
-
-const projectContainer = document.querySelector('.work__projects');
-const projects = document.querySelectorAll('.project');
-
-const workBtnContainer = document.querySelector('.work__categories');
-const projectBtns = document.querySelectorAll('.work__categories button');
-
-
-// 1. 버튼 개수가 아무리 많아져도 코드 수정이 적어야한다.
-// 2. stack의 이름이 바뀌어도 코드 수정이 적어야 한다.
-// => project와 btn을 array로 받자.
-
-function filterProject(stack) {
-    if (stack==null){
-        // work__categories 중 빈곳을 택했을 때,
-        return;
-    } else {if (stack==="All"){
-        for (let project of projects) {
-            project.classList.remove("invisible");
-        }
-    } else {
-        // projects.forEach((project) => {}) 와 같다.
-        for (let project of projects) {
-            if (project.dataset.stack != stack) {
-                project.classList.add("invisible");
-            } else {
-                project.classList.remove("invisible");
-            }
-        }
-    }
-    }
-}
+// Work 
 
 // callback 해오면, 효율적이다.
 workBtnContainer.addEventListener('click', (e) => {
@@ -254,6 +206,92 @@ workBtnContainer.addEventListener('click', (e) => {
         }
     }
 })
+
+
+// Contact
+
+// Handle click on "contact me" button on home
+const contactmeBtn = document.querySelector('.home__contact__btn');
+
+contactmeBtn.addEventListener('click', () => {
+
+    scrollIntoView('#contact');
+    // const scrollTo = document.querySelector(#contact);
+    // scrollTo.scrollIntoView({behavior:'smooth'});
+    // 2회 반복해서 쓰이니 함수화하자.
+
+});
+
+// Handle click on the "arrow button"
+document.addEventListener('scroll', () => {
+    if (window.scrollY > homeHeight-navbarHeight) {
+        arrowBtn.classList.add('visible');
+    } else {
+        arrowBtn.classList.remove('visible')
+    }
+})
+
+arrowBtn.addEventListener('click',() =>{
+    scrollIntoView('#home');
+});
+
+
+
+// projectBtns[1].addEventListener('click', () =>{
+//     filterProject(projectBtn[1].dataset.stack);
+// })
+
+// projectBtns[2].addEventListener('click', () =>{
+//     filterProject("backEnd");
+// })
+
+// projectBtns[3].addEventListener('click', () =>{
+//     filterProject("mobile");
+// })
+
+// projectBtns[0].addEventListener('click', ()=>{
+//     for (let project of projects){
+//         project.classList.remove("invisible");
+//     };
+// })
+
+// Function
+
+// scroll function
+function scrollIntoView(selector) {
+    const scrollTo = document.querySelector(selector);
+    scrollTo.scrollIntoView({behavior:'smooth'});
+};
+
+
+
+
+// 1. 버튼 개수가 아무리 많아져도 코드 수정이 적어야한다.
+// 2. stack의 이름이 바뀌어도 코드 수정이 적어야 한다.
+// => project와 btn을 array로 받자.
+
+//  Work - All projects를 filter 하는 함수
+function filterProject(stack) {
+    if (stack==null){
+        // work__categories 중 빈곳을 택했을 때,
+        return;
+    } else {if (stack==="All"){
+        for (let project of projects) {
+            project.classList.remove("invisible");
+        }
+    } else {
+        // projects.forEach((project) => {}) 와 같다.
+        for (let project of projects) {
+            if (project.dataset.stack != stack) {
+                project.classList.add("invisible");
+            } else {
+                project.classList.remove("invisible");
+            }
+        }
+    }
+    }
+}
+
 
 
 
