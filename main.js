@@ -37,7 +37,7 @@ const projectBtns = document.querySelectorAll('.work__categories button');
 // var 변수 = parseInt(문자);    //문자를 정수형 숫자로 변환해줌
 // var 변수 = parseFloat(문자);     //문자를 실수형 숫자로 변환해줌
 // var 변수 = Nu   mber(문자);    //문자를 정수&실수형 숫자로 변환해줌
-const sectionPaddingBottom = parseInt(window.getComputedStyle(home, null).getPropertyValue('padding-bottom').slice(0,-2));
+
 
 const arrowBtn = document.querySelector('.arrow-btn');
 
@@ -97,28 +97,65 @@ const arrowBtn = document.querySelector('.arrow-btn');
 
 // Scroll 될때마다, Navbar Menu Btn의 border가 바뀌게 하는 기능
 
-document.addEventListener('scroll', () => {    
+
+// callback함수는 이 함수가 실행되는 동안, 다른 작업이 동시에 실행될 수 없다.
+// 그러므로, callback함수는 최대한 간단하게 만들어주어야 한다.
+document.addEventListener('scroll', () => { 
     let active = document.querySelector('.menu ul li.active');
-// 코드가 길다. 수정이 필요하다.
-    if (window.scrollY+sectionPaddingBottom <= about.offsetTop-navbarHeight) {
-        active.classList.remove('active')
-        menuBtns[0].classList.add('active')
-    } else if (window.scrollY+sectionPaddingBottom <= skills.offsetTop-navbarHeight) {
-        active.classList.remove('active')
-        menuBtns[1].classList.add('active')
-    } else if (window.scrollY+sectionPaddingBottom <= work.offsetTop-navbarHeight) {
-        active.classList.remove('active')
-        menuBtns[2].classList.add('active')
-    } else if (window.scrollY+sectionPaddingBottom <= testimonial.offsetTop-navbarHeight) {
-        active.classList.remove('active')
-        menuBtns[3].classList.add('active')
-    } else if (window.scrollY+sectionPaddingBottom <= contact.offsetTop-navbarHeight) {
-        active.classList.remove('active')
-        menuBtns[4].classList.add('active')
-    } else if (window.scrollY+sectionPaddingBottom <= document.body.clientHeight) {
-        active.classList.remove('active')
-        menuBtns[5].classList.add('active')
+    // navbarHeight = navbar.getBoundingClientRect().height;
+    console.log(navbarHeight);
+    navbarHeight = navbar.getBoundingClientRect().height;
+    let sectionPaddingBottom = parseInt(window.getComputedStyle(home, null).getPropertyValue('padding-bottom').slice(0,-2));   
+    
+    if (navbarHeight>100) {
+        let sectionPaddingBottom = navbarHeight;
+        // 코드가 길다. 수정이 필요하다.
+        if (window.scrollY+sectionPaddingBottom <= about.offsetTop-navbarHeight) {
+            active.classList.remove('active')
+            menuBtns[0].classList.add('active')
+        } else if (window.scrollY+sectionPaddingBottom <= skills.offsetTop-navbarHeight) {
+            active.classList.remove('active')
+            menuBtns[1].classList.add('active')
+        } else if (window.scrollY+sectionPaddingBottom <= work.offsetTop-navbarHeight) {
+            active.classList.remove('active')
+            menuBtns[2].classList.add('active')
+        } else if (window.scrollY+sectionPaddingBottom <= testimonial.offsetTop-navbarHeight) {
+            active.classList.remove('active')
+            menuBtns[3].classList.add('active')
+        } else if (window.scrollY+sectionPaddingBottom <= contact.offsetTop-navbarHeight) {
+            active.classList.remove('active')
+            menuBtns[4].classList.add('active')
+        } else if (window.scrollY+sectionPaddingBottom <= document.body.clientHeight) {
+            active.classList.remove('active')
+            menuBtns[5].classList.add('active')
+        }
+    } else if (navbarHeight>70) {
+        sectionPaddingBottom = parseInt(window.getComputedStyle(home, null).getPropertyValue('padding-bottom').slice(0,-2));   
+        // 코드가 길다. 수정이 필요하다.
+        if (window.scrollY+sectionPaddingBottom <= about.offsetTop-navbarHeight) {
+            active.classList.remove('active')
+            menuBtns[0].classList.add('active')
+        } else if (window.scrollY+sectionPaddingBottom <= skills.offsetTop-navbarHeight) {
+            active.classList.remove('active')
+            menuBtns[1].classList.add('active')
+        } else if (window.scrollY+sectionPaddingBottom <= work.offsetTop-navbarHeight) {
+            active.classList.remove('active')
+            menuBtns[2].classList.add('active')
+        } else if (window.scrollY+sectionPaddingBottom <= testimonial.offsetTop-navbarHeight) {
+            active.classList.remove('active')
+            menuBtns[3].classList.add('active')
+        } else if (window.scrollY+sectionPaddingBottom <= contact.offsetTop-navbarHeight) {
+            active.classList.remove('active')
+            menuBtns[4].classList.add('active')
+        } else if (window.scrollY+sectionPaddingBottom <= document.body.clientHeight) {
+            active.classList.remove('active')
+            menuBtns[5].classList.add('active')
+        }
+    } else{
+        return;
     }
+    
+
 })
 
 // Handle scrolling when tapping on the navbar menu
@@ -145,10 +182,8 @@ const toggleBtn = document.querySelector('.navbar__toggle-btn');
 const navbarMenu = document.querySelector('#navbar .menu');
 
 toggleBtn.addEventListener('click',()=>{
-    navbarMenu.classList.toggle('click')
-    // toggle 되었다는 것을, navbar height가 커졌다는 걸로 표현하고 사용하기 위해
-    // 아직은 쓸일이 없네.
-    // navbarHeight = navbar.getBoundingClientRect().height;
+    navbarMenu.classList.toggle('click');
+    
 })
 
 

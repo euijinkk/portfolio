@@ -115,6 +115,7 @@ a {
 }
 
 .description {
+  margin: 0px;
   margin-bottom: 20px;
   width: 80%;
   font-size: 12px;
@@ -174,7 +175,7 @@ nav .menu ul li:hover {
   top: 20px;
   right: 32px;
   /* 오른쪽끝에서 32px 떨어진 곳으로 보낸다 */
-  font-size: 32px;
+  font-size: var(--font-medium);
   color: var(--color-white);
   display: none;
   /* opacity:0; 과의 차이점
@@ -235,22 +236,28 @@ nav .menu ul li:hover {
   border-radius: var(--size-border-radius);
 }
 
+.home__contact__btn:hover {
+  background-color: var(--color-orange);
+}
+
 /* aboutme */
 
 .aboutme {
-  /*display: flex;
+  display: flex;
   flex-direction: column;
-  align-items: center;*/
+  align-items: center;
 }
 .aboutme > p {
-  margin: auto;
+  width: 100%;
+  margin: 0;
 }
 
 .aboutme__stacks {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  margin: 80px 0;
+  margin-top: 30px;
+  margin-bottom: 0px;
 }
 
 .aboutme__stack {
@@ -295,6 +302,10 @@ nav .menu ul li:hover {
 
 .aboutme__stack__detail {
   font-size: var(--font-small);
+}
+
+.aboutme .careers {
+  width: 100%;
 }
 
 .aboutme .career {
@@ -416,6 +427,7 @@ nav .menu ul li:hover {
   border-radius: var(--size-border-radius);
   margin: 0;
   font-size: var(--font-regular);
+  position: relative;
 }
 
 .work__categories button.active,
@@ -436,9 +448,10 @@ nav .menu ul li:hover {
   /* 수직 중간정렬 하는 법 */
   line-height: 24px;
 
-  position: relative;
-  top: -20px;
-  left: 4px;
+  position: absolute;
+  /* top: -20px; */
+  top: 10px;
+  right: 16px;
   opacity: 0;
   transition: all var(--animation-duration) ease-in;
 }
@@ -613,52 +626,6 @@ nav .menu ul li:hover {
   transform: scale(1.2);
 }
 
-@media screen and (max-width: 768px) {
-  /* mobile navbar */
-  .navbar__toggle-btn {
-    display: block;
-  }
-
-  #home {
-    padding-top: 80px;
-  }
-
-  #navbar {
-    background-color: black;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  #navbar .menu ul {
-    flex-direction: column;
-    align-items: center;
-  }
-  #navbar .menu {
-    width: 100%;
-    display: none;
-    /* toggle 될때만 보이도록 만들자 */
-  }
-  #navbar .menu.click {
-    display: block;
-  }
-  /* mobile aboutme */
-  .aboutme__stacks {
-    flex-direction: column;
-  }
-  .aboutme__stack {
-    margin-bottom: 38px;
-  }
-  /* mobile skills */
-  .skillset {
-    flex-direction: column;
-  }
-
-  /* mobile mywork */
-  .project {
-    flex-grow: 1;
-    /* project가 화면을 채우게 만들자 */
-  }
-}
-
 /* arrow up button */
 .arrow-btn {
   background-color: var(--color-grey);
@@ -689,4 +656,113 @@ nav .menu ul li:hover {
 
 .arrow-btn i {
   margin-top: 7px;
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    /* Font size */
+    --font-large: 30px;
+    --font-medium: 18px;
+    --font-regular: 16px;
+    --font-small: 14px;
+    --font-micro: 12px;
+  }
+
+  /* mobile navbar */
+  section {
+    padding: 16px;
+    padding-top: 40px;
+  }
+  #contact {
+    padding-top: 16px;
+  }
+
+  .navbar__toggle-btn {
+    display: block;
+    top: 16px;
+    right: 16px;
+  }
+
+  #navbar {
+    background-color: black;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #navbar .menu ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  #navbar .menu {
+    width: 100%;
+    display: none;
+    /* toggle 될때만 보이도록 만들자 */
+  }
+  #navbar .menu.click {
+    display: block;
+  }
+
+  /* Mobile Home */
+
+  #home {
+    padding-top: 80px;
+  }
+
+  /* mobile aboutme */
+  .aboutme__stacks {
+    flex-direction: column;
+  }
+  .aboutme__stack {
+    margin-bottom: 30px;
+  }
+  /* mobile skills */
+  .skillset {
+    flex-direction: column;
+  }
+
+  /* mobile mywork */
+  .project {
+    flex-grow: 1;
+    /* project가 화면을 채우게 만들자 */
+  }
+
+  .work__categories {
+    /* flex-direction: column; */
+    align-items: center;
+  }
+  .work__categories button {
+    width: 50%;
+    padding: 8px;
+  }
+
+  /* testimonial */
+  .testimonial__box {
+    flex-direction: column;
+  }
+  /* .testimonial__box img {
+      margin:0px;
+   } 이라고 하면, :nth-child가 더 세부적이기 때문에,
+   이것은 무시된다.*/
+  .testimonial__box img:nth-child(odd),
+  .testimonial__box img:nth-child(even) {
+    margin: 0px;
+    margin-bottom: 20px;
+  }
+
+  /* speech bubble이 위로 오도록-> order
+  order의 기본값은 0이다 */
+
+  .testimonial__box .comment {
+    order: 1;
+  }
+
+  /* arrow up */
+
+  .arrow-btn {
+    bottom: 16px;
+    right: 16px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 30px;
+  }
 }
