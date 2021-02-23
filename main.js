@@ -244,18 +244,20 @@ document.addEventListener('scroll',() => {
 
 // callback 해오면, 효율적이다.
 workBtnContainer.addEventListener('click', (e) => {
-    
+    // btn위 span이 선택되는 경우도 생각해야한다.
+    const stack = e.target.dataset.stack || e.target.parentNode.dataset.stack;
     projectContainer.classList.add('anim-out');    
     setTimeout(()=>{
         // 비동기적으로 발생하도록.
         // 기존의 것이 anim-out되고, 0.3초 후에 filtering 하게 하자.
         // brower에게 0.3초 후에 실행하도록 부탁하는 API이다.
         projectContainer.classList.remove('anim-out');  
-        filterProject(e.target.dataset.stack);  
+        filterProject(stack);  
     },300)
 
     for (let Btn of projectBtns) {
-        if (Btn == e.target) {
+        // btn위 span이 선택되는 경우도 생각해야한다.
+        if (Btn == e.target || Btn == e.target.parentNode) {
             Btn.classList.add("active");
         } else {
             Btn.classList.remove("active");
@@ -331,7 +333,7 @@ function filterProject(stack) {
     if (stack==null){
         // work__categories 중 빈곳을 택했을 때,
         return;
-    } else {if (stack==="All"){
+    } else if (stack==="All"){
         for (let project of projects) {
             project.classList.remove("invisible");
         }
@@ -346,7 +348,6 @@ function filterProject(stack) {
         }
     }
     }
-}
 
 
 
