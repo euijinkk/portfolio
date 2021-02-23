@@ -23,7 +23,7 @@ const contact = document.querySelector('#contact');
 const contactHeight = contact.getBoundingClientRect().height;
 
 
-const menuBtns = document.querySelectorAll('.menu ul li');
+
 
 const projectContainer = document.querySelector('.work__projects');
 const projects = document.querySelectorAll('.project');
@@ -31,7 +31,7 @@ const projects = document.querySelectorAll('.project');
 const workBtnContainer = document.querySelector('.work__categories');
 const projectBtns = document.querySelectorAll('.work__categories button');
 
-
+const menuBtns = document.querySelectorAll('.menu ul li');
 
 // // 형변환 parseInt(), 
 // var 변수 = parseInt(문자);    //문자를 정수형 숫자로 변환해줌
@@ -97,65 +97,86 @@ const arrowBtn = document.querySelector('.arrow-btn');
 
 // Scroll 될때마다, Navbar Menu Btn의 border가 바뀌게 하는 기능
 
+// 1. 모든 section 요소들을 가지고 온다.
+// 2. IntersectionObserver 를 이용해서 모든 섹션을 관찰한다
+// 3. 보이는 섹션에 해당하는 메뉴 아이템을 활성화 시킨다.
+
+// const sectionIds = [
+//     '#home',
+//     '#about',
+//     '#skills',
+//     '#work',
+//     '#testimonials',
+//     '#contact',
+//   ];
+//   const sections = sectionIds.map(id => document.querySelector(id));
+//   const navItems = sectionIds.map(id =>
+//     document.querySelector(`[data-link="${id}"]`)
+//   );
+  
+//   let selectedNavIndex = 0;
+//   let selectedNavItem = navItems[0];
+//   function selectNavItem(selected) {
+//     selectedNavItem.classList.remove('active');
+//     selectedNavItem = selected;
+//     selectedNavItem.classList.add('active');
+//   }
+  
+//   const observerOptions = {
+//     root: null,
+//     rootMargin: '0px',
+//     threshold: 0.3,
+//   };
+  
+//   const observerCallback = (entries, observer) => {
+//     entries.forEach(entry => {
+//       if (!entry.isIntersecting && entry.intersectionRatio > 0) {
+//         const index = sectionIds.indexOf(`#${entry.target.id}`);
+//         // 스크롤링이 아래로 되어서 페이지가 올라옴
+//         if (entry.boundingClientRect.y < 0) {
+//           selectedNavIndex = index + 1;
+//         } else {
+//           selectedNavIndex = index - 1;
+//         }
+//       }
+//     });
+//   };
+  
+//   const observer = new IntersectionObserver(observerCallback, observerOptions);
+//   sections.forEach(section => observer.observe(section));
+  
 
 // callback함수는 이 함수가 실행되는 동안, 다른 작업이 동시에 실행될 수 없다.
 // 그러므로, callback함수는 최대한 간단하게 만들어주어야 한다.
 document.addEventListener('scroll', () => { 
     let active = document.querySelector('.menu ul li.active');
     // navbarHeight = navbar.getBoundingClientRect().height;
-    console.log(navbarHeight);
     navbarHeight = navbar.getBoundingClientRect().height;
     let sectionPaddingBottom = parseInt(window.getComputedStyle(home, null).getPropertyValue('padding-bottom').slice(0,-2));   
     
     if (navbarHeight>100) {
-        let sectionPaddingBottom = navbarHeight;
-        // 코드가 길다. 수정이 필요하다.
-        if (window.scrollY+sectionPaddingBottom <= about.offsetTop-navbarHeight) {
-            active.classList.remove('active')
-            menuBtns[0].classList.add('active')
-        } else if (window.scrollY+sectionPaddingBottom <= skills.offsetTop-navbarHeight) {
-            active.classList.remove('active')
-            menuBtns[1].classList.add('active')
-        } else if (window.scrollY+sectionPaddingBottom <= work.offsetTop-navbarHeight) {
-            active.classList.remove('active')
-            menuBtns[2].classList.add('active')
-        } else if (window.scrollY+sectionPaddingBottom <= testimonial.offsetTop-navbarHeight) {
-            active.classList.remove('active')
-            menuBtns[3].classList.add('active')
-        } else if (window.scrollY+sectionPaddingBottom <= contact.offsetTop-navbarHeight) {
-            active.classList.remove('active')
-            menuBtns[4].classList.add('active')
-        } else if (window.scrollY+sectionPaddingBottom <= document.body.clientHeight) {
-            active.classList.remove('active')
-            menuBtns[5].classList.add('active')
-        }
-    } else if (navbarHeight>70) {
-        sectionPaddingBottom = parseInt(window.getComputedStyle(home, null).getPropertyValue('padding-bottom').slice(0,-2));   
-        // 코드가 길다. 수정이 필요하다.
-        if (window.scrollY+sectionPaddingBottom <= about.offsetTop-navbarHeight) {
-            active.classList.remove('active')
-            menuBtns[0].classList.add('active')
-        } else if (window.scrollY+sectionPaddingBottom <= skills.offsetTop-navbarHeight) {
-            active.classList.remove('active')
-            menuBtns[1].classList.add('active')
-        } else if (window.scrollY+sectionPaddingBottom <= work.offsetTop-navbarHeight) {
-            active.classList.remove('active')
-            menuBtns[2].classList.add('active')
-        } else if (window.scrollY+sectionPaddingBottom <= testimonial.offsetTop-navbarHeight) {
-            active.classList.remove('active')
-            menuBtns[3].classList.add('active')
-        } else if (window.scrollY+sectionPaddingBottom <= contact.offsetTop-navbarHeight) {
-            active.classList.remove('active')
-            menuBtns[4].classList.add('active')
-        } else if (window.scrollY+sectionPaddingBottom <= document.body.clientHeight) {
-            active.classList.remove('active')
-            menuBtns[5].classList.add('active')
-        }
-    } else{
-        return;
+        sectionPaddingBottom = navbarHeight;
+    } 
+    // 코드가 길다. 수정이 필요하다.
+    if (window.scrollY+sectionPaddingBottom <= about.offsetTop-navbarHeight) {
+        active.classList.remove('active')
+        menuBtns[0].classList.add('active')
+    } else if (window.scrollY+sectionPaddingBottom <= skills.offsetTop-navbarHeight) {
+        active.classList.remove('active')
+        menuBtns[1].classList.add('active')
+    } else if (window.scrollY+sectionPaddingBottom <= work.offsetTop-navbarHeight) {
+        active.classList.remove('active')
+        menuBtns[2].classList.add('active')
+    } else if (window.scrollY+sectionPaddingBottom <= testimonial.offsetTop-navbarHeight) {
+        active.classList.remove('active')
+        menuBtns[3].classList.add('active')
+    } else if (window.scrollY+sectionPaddingBottom <= contact.offsetTop-navbarHeight) {
+        active.classList.remove('active')
+        menuBtns[4].classList.add('active')
+    } else if (window.scrollY+sectionPaddingBottom <= document.body.clientHeight) {
+        active.classList.remove('active')
+        menuBtns[5].classList.add('active')
     }
-    
-
 })
 
 // Handle scrolling when tapping on the navbar menu
